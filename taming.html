@@ -1,0 +1,239 @@
+<div class="wrapperbox">
+<div class="box">
+
+<form>
+	<h3>Crumplecorn's ARK Taming Calculator</h3>
+	<p class="subheading">V245.9</p>
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Creature']}" ng-click="showhidetable('Creature')">Creature Details</div>
+	<div class="tableslide" ng-show="tablevisibility['Creature']">
+	<table>
+		<tr>
+			<td style="width: 50%" class="label">Creature:</td>
+			<td><select ng-show="showoldselects" ng-options="name as name for (name, details) in creatures" ng-model="creature.name" ng-change="selectdino()"></select>
+			<input ng-hide="showoldselects" class="autocomplete" autocomplete data-source="creatures" ng-change="searchdino()" data-default="creature.name" ng-model="creature.searchname"></td>
+		</tr>
+		<tr>
+			<td class="label">Level:</td>
+			<td><input ng-model="creature.level" ng-change="selectlevel()" type="number" min="1"></td>
+		</tr>
+		<tr>
+			<td class="label">Taming Method:</td>
+			<td><select ng-options="tamingmethod as tamingmethod for tamingmethod in creatures[creature.name].tamingmethods" ng-model="creature.tamingmethod" ng-change="settamingmethod()"></select></td>
+		</tr>
+		<tr>
+			<td class="label">Taming Multiplier:</td>
+			<td><input ng-model="creature.tamingmultiplier" ng-change="settamingmethod()" type="number" step="any">
+		</tr>
+		<tr>
+			<td class="label">Food Rate Multiplier:</td>
+			<td><input ng-model="creature.foodratemultiplier" ng-change="settamingmethod()" type="number" step="any"></td>
+		</tr>
+	</table>
+	</div>
+	<div class="tablesummary slide" ng-hide="tablevisibility['Creature']">
+		Level {{creature.level}} {{creature.name}}
+	</div>
+
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Food']}" ng-click="showhidetable('Food')">Food Details</div>
+	<div class="tableslide" ng-show="tablevisibility['Food']">
+	<table>
+		<thead>
+			<td>Food</td>
+			<td>Quantity</td>
+			<td>Max</td>
+			<td>Time</td>
+		</thead>
+		<tr ng-repeat="food in creatures[creature.name].foods" class="repeatslide">
+			<td class="label" ng-class="{'fillfood': creature.fillfood==food}" ng-click="setFillFood(food)">{{food.split("-")[0]}}{{food.split("-")[0]=="Kibble" ? ' ('+creatures[creature.name].kibble+')' : ''}}:</td>
+			<td><input ng-model="foodamounts[food]" ng-change="foodcalc()" type="number"></td>
+			<td>{{maxfoodamounts[food]}}</td>
+			<td>{{times[food] | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+	</table>
+	</div>
+	<div class="tablesummary slide" ng-hide="tablevisibility['Food']">
+		<span ng-repeat="food in creatures[creature.name].foods | filter: filterFoods">{{food.split("-")[0]}}{{food.split("-")[0]=="Kibble" ? ' ('+creatures[creature.name].kibble+')' : ''}}: {{foodamounts[food]}}<span ng-show=" ! $last ">, </span></span>
+	</div>
+
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Tame']}" ng-click="showhidetable('Tame')" ng-show="creature.tamingmethod=='Standard'">Tame Details</div>
+	<div class="tableslide" ng-show="creature.tamingmethod=='Standard' && tablevisibility['Tame']">
+	<table>
+		<tr>
+			<td ng-show="showextratamedetails" style="width: 50%" class="label">Affinity:</td>
+			<td ng-show="showextratamedetails">{{creature.suppliedaffinity}}/{{creature.requiredaffinity}}</td>
+		</tr>
+		<tr>
+			<td ng-show="showextratamedetails" style="width: 50%" class="label">Food Total / Rate:</td>
+			<td ng-show="showextratamedetails">{{creature.totalfood}} ({{creature.foodrate | number:1}})</td>
+		</tr>
+		<tr>
+			<td style="width: 50%" class="label">Total Time:</td>
+			<td>{{totaltime | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+		<tr>
+			<td style="width: 50%" class="label">Effectiveness:</td>
+			<td>{{creature.effectiveness | number:1}}% (+{{creature.extralevels}} Lvl)</td>
+		</tr>
+		<tr>
+			<td ng-show="showextratamedetails" style="width: 50%" class="label">Torpor Total / Rate:</td>
+			<td ng-show="showextratamedetails">{{creature.torpor | number:1}} ({{creature.torporrate | number:3}})</td>
+		</tr>
+		<tr>
+			<td class="label">Torpor Buffer:</td>
+			<td>{{narcotics.buffertime | secondsToDateTime | date: 'HH:mm:ss'}} ({{narcotics.buffernarcotics}})</td>
+		</tr>
+		<tr>
+			<td class="label">Narcotics Buffer:</td>
+			<td>{{narcotics.narcoticsbuffertime | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+		<tr>
+			<td class="label">{{narcotics.narcoticsmethod}}:</td>
+			<td>{{narcotics.min}} - {{narcotics.max}}</td>
+		</tr>
+	</table>
+	</div>
+	<div class="tablesummary slide" ng-class="{timeractive: starvetiming.time}" ng-show="creature.tamingmethod=='Standard' && !tablevisibility['Tame']">
+		{{(starvetiming.time)?(starvetiming.tametime):(totaltime) | secondsToDateTime | date: 'HH:mm:ss'}}
+	</div>
+
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Tame']}" ng-click="showhidetable('Tame')" ng-show="creature.tamingmethod=='Non-Violent'">Tame Details</div>
+	<div class="tableslide" ng-show="creature.tamingmethod=='Non-Violent' && tablevisibility['Tame']">
+	<table>
+		<tr>
+			<td style="width: 50%" class="label">Affinity:</td>
+			<td>{{creature.suppliedaffinity}}/{{creature.requiredaffinity}}</td>
+		</tr>
+		<tr>
+			<td style="width: 50%" class="label">Minimum Time:</td>
+			<td>{{totaltime | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+		<tr>
+			<td style="width: 50%" class="label">Effectiveness:</td>
+			<td>{{creature.effectiveness | number:1}}% (+{{creature.extralevels}} Lvl)</td>
+		</tr>
+	</table>
+	</div>
+	<div class="tablesummary slide" ng-show="creature.tamingmethod=='Non-Violent' && !tablevisibility['Tame']">
+		Minimum Time: {{totaltime | secondsToDateTime | date: 'HH:mm:ss'}}
+	</div>
+
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Narcotics']}" ng-click="showhidetable('Narcotics')" ng-show="creature.tamingmethod=='Standard'">Narcotics Timing</div>
+	<div class="tableslide" ng-show="creature.tamingmethod=='Standard' && tablevisibility['Narcotics']">
+	<table>
+		<tr>
+			<td class="label">Current Torpor:</td>
+			<td><input ng-model="narcoticstiming.currenttorpor" ng-change="narcoticstimingcalc()" integer type="number" step="any"><input class="hidden" id="narcoticstimercb" type="checkbox" ng-model="narcoticstiming.time" ng-change="narcoticstimer()"><label for="narcoticstimercb">Time</label></td>
+		</tr>
+		<tr>
+			<td class="label">Narcotics Method:</td>
+			<td>
+				<select ng-options="methodname as methodname for (methodname, value) in narcoticsmethods" ng-model="narcotics.narcoticsmethod" ng-change="narcoticscalc()"</select>
+			</td>
+		</tr>
+		<tr>
+			<td class="label">Use {{narcotics.narcoticsmethod}}:</td>
+			<td>
+				<input ng-model="narcoticstiming.supplynarcoticamount" type="number">
+				<input type="button" ng-click="supplynarcotic();" value="Use">
+			</td>
+		</tr>
+		<tr>
+			<td class="label">For Max:</td>
+			<td>{{narcoticstiming.topupnarcotics}}</td>
+		</tr>
+		<tr>
+			<td class="label">Buffer:</td>
+			<td ng-class="{timeractive: narcoticstiming.time, timeralert: narcoticstiming.buffertime/60<narcoticstiming.alarmthreshold && narcoticstiming.time}">{{narcoticstiming.buffertime+narcoticstiming.narcoticsbuffertime | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+		<tr>
+			<td class="label">Alarm:</td>
+			<td><input ng-model="narcoticstiming.alarmthreshold" type="number" step="any"><input id="narcoticsalarmcb" class="hidden" type="checkbox" ng-model="narcoticstiming.alarm"><label for="narcoticsalarmcb">Alarm</label></td>
+		</tr>
+	</table>
+	</div>
+	<div ng-class="{timeractive: narcoticstiming.time, timeralert: narcoticstiming.buffertime/60<narcoticstiming.alarmthreshold && narcoticstiming.time}" class="tablesummary slide" ng-show="creature.tamingmethod=='Standard' && !tablevisibility['Narcotics']">
+		{{narcoticstiming.buffertime+narcoticstiming.narcoticsbuffertime | secondsToDateTime | date: 'HH:mm:ss'}}
+	</div>
+
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Starve']}" ng-click="showhidetable('Starve')" ng-show="creature.tamingmethod=='Standard'">Starve Timing</div>
+	<div class="tableslide" ng-show="creature.tamingmethod=='Standard' && tablevisibility['Starve']">
+	<table>
+		<tr>
+			<td class="label">Maximum Food:</td>
+			<td><input ng-model="starvetiming.maxfood" ng-change="starvetimingcalc()" type="number"></td>
+		</tr>
+		<tr>
+			<td class="label">Current Food:</td>
+			<td><input ng-model="starvetiming.currentfood" ng-change="starvetimingcalc()" integer type="number" step="any"><input id="starvetimercb" class="hidden" type="checkbox" ng-model="starvetiming.time" ng-change="starvetimer()"><label for="starvetimercb">Time</label></td>
+		</tr>
+		<tr>
+			<td class="label">Target Food:</td>
+			<td>{{starvetiming.maxfood-creature.totalfood}}</td>
+		</tr>
+		<tr>
+			<td class="label">Tame Time:</td>
+			<td ng-class="{timeractive: starvetiming.time}">{{starvetiming.tametime | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+		<tr>
+			<td class="label">Starve Time:</td>
+			<td ng-class="{timeractive: starvetiming.time, timeralert: starvetiming.starvetime/60<starvetiming.alarmthreshold && starvetiming.time}">{{starvetiming.starvetime | secondsToDateTime | date: 'HH:mm:ss'}}</td>
+		</tr>
+		<tr>
+			<td class="label">Alarm:</td>
+			<td><input ng-model="starvetiming.alarmthreshold" type="number" step="any"><input id="starvealarmcb" class="hidden" type="checkbox" ng-model="starvetiming.alarm"><label for="starvealarmcb">Alarm</label></td>
+		</tr>
+	</table>
+	</div>
+	<div ng-class="{timeractive: starvetiming.time, timeralert: starvetiming.starvetime/60<starvetiming.alarmthreshold && starvetiming.time}" class="tablesummary slide" ng-show="creature.tamingmethod=='Standard' && !tablevisibility['Starve']">
+		{{starvetiming.starvetime | secondsToDateTime | date: 'HH:mm:ss'}}
+	</div>
+
+	<div class="tableheader slide" ng-class="{'dimmed': !tablevisibility['Knockout']}" ng-click="showhidetable('Knockout')" ng-show="creature.tamingmethod=='Standard'">Knockout Details</div>
+	<div class="tableslide" ng-show="creature.tamingmethod=='Standard' && tablevisibility['Knockout']">
+	<table>
+		<tr>
+			<td class="label">Weapon:</td>
+			<td><select ng-show="showoldselects" ng-options="methodname as methodname for (methodname, value) in komethods" ng-model="ko.komethod" ng-change="knockoutcalc()"</select>
+			<input ng-hide="showoldselects" class="autocomplete" autocomplete data-source="komethods" ng-change="searchkomethod()" data-default="ko.komethod" ng-model="ko.searchkomethod"></td>
+		</tr>
+		<tr>
+			<td class="label">Torpor:Damage</td>
+			<td>{{komethods[ko.komethod].torpor/komethods[ko.komethod].damage}}</td>
+		</tr>
+		<tr ng-show="komethods[ko.komethod].usesmeleedam">
+			<td class="label">Melee Damage %:</td>
+			<td><input ng-model="ko.komeleedam" ng-change="knockoutcalc()" type="number" step="any"></td>
+		</tr>
+		<tr ng-show="komethods[ko.komethod].usesweapondam">
+			<td class="label">Weapon Damage %:</td>
+			<td><input ng-model="ko.koweapondam" ng-change="knockoutcalc()" type="number" step="any"></td>
+		</tr>
+		<tr ng-repeat="(method, quantity) in ko.koquantities">
+			<td class="label">{{method}}</td>
+			<td>{{quantity}} ({{(ko.kotimes[method]>0)?(ko.kotimes[method]+" sec"):("Instant")}})</td>
+		</tr>
+	</table>
+	</div>
+	<div class="tablesummary slide" ng-show="creature.tamingmethod=='Standard' && !tablevisibility['Knockout']">
+		{{(komethods[ko.komethod].usesmeleedam)?(ko.komeleedam+"%M"):("")}} {{(komethods[ko.komethod].usesweapondam)?(ko.koweapondam+"%D"):("")}} {{ko.komethod}}, {{ko.koquantities['Body']}} hits, {{ko.kotimes['Body']}} sec
+	</div>
+
+<!--
+<div style="display: flex; flex-direction:column;align-items:center;">
+<div class="messagebox tableslide" ng-show="creature.name=='Plesiosaurus'">Plesiosaurs are a bit strange - most I summon are level 35s with the stats of a Level 1, however the few that are higher level have the expected stats. If the calculator max torpor doesn't match your unconcious lv35 plesio, try setting the calculator to level 1 instead.</div>
+<div class="messagebox tableslide" ng-show="creature.tamingmethod=='Non-Violent'">Non-violent tames have an extra delay near the start as the food must drop below 90% after the taming starts before feeding can continue. I'm not sure if this can be calculated reliably as it depends on the creature's food stat, but for a level 60 Ichthy it adds around a minute.</div>
+</div>
+-->
+
+
+<p class="footer">
+<input id="extratamedetailscb" class="hidden" type="checkbox" ng-model="showextratamedetails" ng-change="showhideextratamedetails()" ng-true-value="1" ng-false-value="0"><label for="extratamedetailscb">Extra Tame Details</label>
+<input id="animationscb" class="hidden" type="checkbox" ng-model="showanimations" ng-change="showhideanimations()" ng-true-value="0" ng-false-value="1"><label for="animationscb"> Disable Animations</label>
+<input id="oldselectscb" class="hidden" type="checkbox" ng-model="showoldselects" ng-change="showhideoldselects()" ng-true-value="1" ng-false-value="0"><label for="oldselectscb">Simple Selectors</label><br>
+<a href="http://crumplecorn.com/content/taming-calculator">Feedback / Background / Changelog</a><br>
+<a href="http://twitch.tv/crumplecorn">Stream</a> <a href="https://www.twitchalerts.com/donate/crumplecorn">Donate</a>
+</p>
+</form>
+</div>
+
+</div>
