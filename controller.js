@@ -1539,17 +1539,19 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 	$scope.texponent=0.800403041; //0.829050872; //0.76593984; //0.827745067192723; //0.8107032;
 	$scope.tcoefficient=22.39671632; //25.7837826; //18.62553525; //24.7933173692763; //21.93040668;
+	$scope.basetamingmultiplier=2; //Hidden tame rate multiplier on official servers
 
 	//Value relating to the creature being tamed
 	$scope.creature=$cookies.getObject('creature');
-	if ($scope.creature==undefined || !($scope.creature.name in $scope.creatures) || $scope.creature.version!="20160131") {
+	if ($scope.creature==undefined || !($scope.creature.name in $scope.creatures) || $scope.creature.version!="20170911") {
 		$scope.creature={
-			version: "20160131",
+			version: "20170911",
 			searchname: "Ankylosaurus",
 			name: "Ankylosaurus",
 			level: 20,
 			tamingmethod: "Standard",
-			tamingmultiplier: 1,
+			usertamingmultiplier: 1,
+			tamingmultiplier: 2,
 			foodratemultiplier: 1,
 			totalfood: 0,
 			suppliedaffinity: 0
@@ -1707,6 +1709,8 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 		if ($scope.creature.tamingmultiplier>0 && $scope.creature.foodratemultiplier>0) { //Necessary to prevent endless loop
 			var now = new Date();
 			$cookies.putObject('creature', $scope.creature, {expires: new Date(now.getFullYear(), now.getMonth()+6, now.getDate()), path: '/taming'});
+
+			$scope.creature.tamingmultiplier=$scope.creature.usertamingmultiplier*$scope.basetamingmultiplier;
 
 			$scope.maxfoodcalc();
 			$scope.foodcalc();
