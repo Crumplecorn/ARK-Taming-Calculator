@@ -14,7 +14,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 50,
 			affinity: 50
 		},
-		'Raw Meat-Dung Beetle': {
+		'Raw Meat-Arthropluera': {
 			food: 15,
 			affinity: 15
 		},
@@ -451,7 +451,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 75.0,
 			ineffectbyaff: 2.5,
 			basefood: 'Spoiled Meat',
-			foods: ['Raw Meat', 'Spoiled Meat', 'Broth of Enlightenment'],
+			foods: ['Raw Meat-Arthropluera', 'Spoiled Meat', 'Broth of Enlightenment'],
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2.0,
 			nonviolentfoodaffinitymultiplier: 1.6
@@ -699,7 +699,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 		},
 
 		"Direwolf": {
-			foodrate: -0.444444462455,
+			foodrate: -0.001543*288.039185,
 			basetorpor: 450,
 			basetorporrate: -0.1*5.0,
 			torporperlevel: 0.06,
