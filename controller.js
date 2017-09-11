@@ -157,46 +157,6 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 	}
 
-	$scope.foodprioritylist=[
-		'Kibble-Generic',
-		'Kibble-Gigantopithecus',
-		'Kibble-Bronto',
-		'Kibble-Mosasaurus',
-		'Kibble-Diplodocus',
-		'Prime Meat',
-		'Prime Meat-Compy',
-		'Cooked Prime Meat',
-		'Prime Meat Jerky',
-		'C/J Prime',
-		'Raw Meat',
-		'Cooked Meat',
-		'Meat Jerky',
-		'Crop',
-		'Mejoberry',
-		'Other Berry',
-		'Spoiled Meat',
-		'Raw Fish',
-		'Cooked Fish',
-		'Prime Fish',
-		'Cooked Prime Fish',
-		'Rare Mushroom',
-		'Plant Species X Seed',
-		'Giga Egg',
-		'Quetz Egg',
-		'Rex Egg',
-		'Spino Egg',
-		'Bronto Egg',
-		'Carno Egg',
-		'Dodo Egg',
-		'Large Feces',
-		'Medium Feces',
-		'Small Feces',
-		'Human Feces',
-		'Angler Gel',
-		'Broth of Enlightenment',
-		'Rare Flower'
-	];
-
 	$scope.komethods={
 
 		/*'Bow': 20*2+20*2.5,
@@ -1951,7 +1911,6 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 	$scope.effectivenesscalc=function() {
 		var foods=$scope.foods;
-		var foodprioritylist=$scope.foodprioritylist;
 		var foodamounts=$scope.foodamounts;
 		var creature=$scope.creature;
 		var creaturedata=$scope.creatures[creature.name];
@@ -1963,8 +1922,8 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 		if (creature.tamingmethod=="Standard") {
 
-			for (var i = 0; i < foodprioritylist.length; i++) {
-				var food=foodprioritylist[i];
+			for (var i = 0; i < creaturedata.foods.length; i++) {
+				var food=creaturedata.foods[i];
 				while (fedfood[food]<foodamounts[food]) {
 					fedfood[food]++;
 					effectiveness-=Math.pow(effectiveness, 2)*creaturedata.ineffectbyaff/foods[food].affinity/creature.tamingmultiplier/100;
@@ -1975,8 +1934,8 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 		if (creature.tamingmethod=="Non-Violent") {
 
-			for (var i = 0; i < foodprioritylist.length; i++) {
-				var food=foodprioritylist[i];
+			for (var i = 0; i < creaturedata.foods.length; i++) {
+				var food=creaturedata.foods[i];
 				while (fedfood[food]<foodamounts[food]) {
 					fedfood[food]++;
 					effectiveness-=Math.pow(effectiveness, 2)*creaturedata.ineffectbyaff/foods[food].affinity/creature.tamingmultiplier/creaturedata.nonviolentfoodaffinitymultiplier/100;
