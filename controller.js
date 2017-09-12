@@ -30,7 +30,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 50,
 			affinity: 150
 		},
-		'Prime Meat-Compy': {
+		'Prime Meat-Compsognathus': {
 			food: 20,
 			affinity: 600
 		},
@@ -47,6 +47,18 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinity: 75
 		},
 		'Spoiled Meat': {
+			food: 50,
+			affinity: 100
+		},
+		'Mutton': {
+			food: 50,
+			affinity: 187.5
+		},
+		'Mutton-Compsognathus': {
+			food: 20,
+			affinity: 750
+		},
+		'Lamb Chop': {
 			food: 50,
 			affinity: 100
 		},
@@ -143,7 +155,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinity: 75
 		},
 		'Angler Gel': {
-			food: 8*3,
+			food: 24,
 			affinity: 50.0
 		},
 		'Broth of Enlightenment': {
@@ -151,8 +163,12 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinity: 1500.0
 		},
 		'Rare Flower': {
-			food: 15*2.3333,
+			food: 34.9995,
 			affinity: 200
+		},
+		'Honey-Direbear': {
+			food: 80,
+			affinity: 400
 		}
 
 	}
@@ -353,7 +369,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 100,
 			ineffectbyaff: 1.875,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Diplo',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -375,7 +391,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 90,
 			ineffectbyaff: 2.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Kairuku',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -430,7 +446,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 100,
 			ineffectbyaff: 1.875,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Stego',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -466,7 +482,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 75,
 			ineffectbyaff: 0.4,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Scorp',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -532,7 +548,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 100,
 			ineffectbyaff: 1.875,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Ankylo',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -574,8 +590,8 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			baseaffinity: 500.0,
 			affinityperlevel: 65.0,
 			ineffectbyaff: 8.333333,
-			basefood: 'Prime Meat-Compy',
-			foods: ['Prime Meat-Compy'],
+			basefood: 'Prime Meat-Compsognathus',
+			foods: ['Prime Meat-Compsognathus', 'Mutton-Compsognathus'],
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
 				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
@@ -596,7 +612,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 22.5,
 			ineffectbyaff: 8.333333,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop'],
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
 				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
@@ -618,7 +634,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 90.0,
 			ineffectbyaff: 2.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Quetzal',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -640,7 +656,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 45,
 			ineffectbyaff: 4.166666,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop'],
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
 				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
@@ -685,7 +701,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 125,
 			ineffectbyaff: 1.25,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mejoberry', 'Other Berry', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Honey-Direbear', 'Mejoberry', 'Other Berry', 'Kibble-Generic'],
 			kibble: 'Carno',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -707,7 +723,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 60,
 			ineffectbyaff: 3.125,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Carno',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -769,7 +785,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 50.0,
 			ineffectbyaff: 4.166667,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Spoiled Meat', 'Human Feces', 'Small Feces', 'Medium Feces', 'Large Feces'],
+			foods: ['Human Feces', 'Small Feces', 'Medium Feces', 'Large Feces'],
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2,
 			nonviolentfoodaffinitymultiplier: 1.0
@@ -784,7 +800,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 60.0,
 			ineffectbyaff: 3.275,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Titanoboa',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -829,7 +845,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 160,
 			ineffectbyaff: 1.25,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Quetzal',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -861,7 +877,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 75,
 			ineffectbyaff: 2.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Dodo',
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2.5,
@@ -877,7 +893,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 45,
 			ineffectbyaff: 4.166667,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop'],
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
 				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
@@ -966,7 +982,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 100,
 			ineffectbyaff: 1.875,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Spino',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1001,7 +1017,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 600,
 			ineffectbyaff: 0.06,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Mosasaurus'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Mosasaurus'],
 			kibble: 'Quetzal',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1020,7 +1036,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 90,
 			ineffectbyaff: 2.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop'],
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2.0,
 			nonviolentfoodaffinitymultiplier: 1.0
@@ -1165,7 +1181,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 250,
 			ineffectbyaff: 0.75,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Rex',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1207,7 +1223,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 60,
 			ineffectbyaff: 3.125,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Dodo',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1251,7 +1267,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 300,
 			ineffectbyaff: 0.9375,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Rex',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1275,7 +1291,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 60,
 			ineffectbyaff: 3.125,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Parasaur',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1298,7 +1314,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 150,
 			ineffectbyaff: 1.25,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Scorp',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1320,7 +1336,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 60,
 			ineffectbyaff: 3.125,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Bronto',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1343,7 +1359,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 75,
 			ineffectbyaff: 2.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Trike',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1365,7 +1381,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 150,
 			ineffectbyaff: 1.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Argent',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
@@ -1409,7 +1425,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 85.0,
 			ineffectbyaff: 2.5,
 			basefood: 'Raw Meat',
-			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Generic'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
 			kibble: 'Gallimimus',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
