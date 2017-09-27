@@ -884,6 +884,28 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			nonviolentfoodaffinitymultiplier: 1.6
 		},
 
+		Iguanodon: {
+			foodrate: -0.001929*864.005554,
+			basetorpor: 210.0,
+			basetorporrate: -0.1*3.0,
+			torporperlevel: 0.06,
+			baseaffinity: 2800.0,
+			affinityperlevel: 140.0,
+			ineffectbyaff: 0.4,
+			basefood: 'Mejoberry',
+			foods: ['Mejoberry', 'Other Berry', 'Kibble-Generic'],
+			kibble: 'Microraptor',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 2
+			}
+		},
+
 		Kairuku: {
 			foodrate: -0.001389*1079.913574,
 			basetorpor: 300,
