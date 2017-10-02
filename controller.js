@@ -90,6 +90,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 79.98,
 			affinity: 300
 		},
+ 		"Kibble-Griffin" : {
+	 		food : 80,
+ 			affinity : 550
+ 		},
 		'Kibble-Mosasaurus': {
 			food: 79.98,
 			affinity: 550
@@ -97,6 +101,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 		'Kibble-Diplodocus': {
 			food: 53.28,
 			affinity: 275
+		},
+		'Kibble-Therizinosaurus': {
+			food: 119.97,
+			affinity: 400
 		},
 		'Crop': {
 			food: 40,
@@ -871,6 +879,27 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			nonviolentfoodaffinitymultiplier: 1.65
 		},
 
+		Griffin: {
+			foodrate: -0.311111111,
+			basetorpor: 1500.0,
+			basetorporrate: -2.222222,
+			torporperlevel: 0.06,
+			baseaffinity: 3000.0,
+			affinityperlevel: 136,
+			ineffectbyaff: 3.125,
+			basefood: 'Raw Meat',
+			foods: ['Mutton', 'Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Griffin'],
+			kibble: 'Allosaurus',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+			},
+			hitboxes: {
+				"Body": 1
+			}
+		},
+
 		Ichthyosaurus: {
 			foodrate: -0.001929*420.0,
 			baseaffinity: 1500,
@@ -1454,6 +1483,28 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
 				"DmgType_Melee_Human": 0.8,
 				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 3
+			}
+		},
+
+		Therizinosaurus: {
+			foodrate: -0.002314*180.063385,
+			basetorpor: 925.0,
+			basetorporrate: -0.1*28.333332,
+			torporperlevel: 0.06,
+			baseaffinity: 6800.0,
+			affinityperlevel: 160.0,
+			ineffectbyaff: 0.06,
+			basefood: 'Mejoberry',
+			foods: ['Mejoberry', 'Other Berry', 'Crop', 'Kibble-Therizinosaurus'],
+			kibble: 'Megalosaurus',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8
 			},
 			hitboxes: {
 				"Body": 1,
