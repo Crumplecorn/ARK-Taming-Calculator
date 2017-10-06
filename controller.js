@@ -18,9 +18,25 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 15,
 			affinity: 15
 		},
+		'Raw Meat-Daeodon': {
+			food: 10,
+			affinity: 10
+		},
+		'Raw Meat-Thylacoleo': {
+			food: 50,
+			affinity: 10
+		},
 		'Cooked Meat': {
 			food: 25,
 			affinity: 25
+		},
+		'Cooked Meat-Daeodon': {
+			food: 25,
+			affinity: 5
+		},
+		'Cooked Meat-Thylacoleo': {
+			food: 25,
+			affinity: 20
 		},
 		'Meat Jerky': {
 			food: 25,
@@ -34,17 +50,25 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 20,
 			affinity: 600
 		},
-		'Cooked Prime Meat': {
+		'Prime Meat-Daeodon': {
 			food: 50,
-			affinity: 75
+			affinity: 30
 		},
-		'Prime Meat Jerky': {
+		'Prime Meat-Thylacoleo': {
 			food: 50,
-			affinity: 75
+			affinity: 20
 		},
 		'C/J Prime': {
 			food: 50,
 			affinity: 75
+		},
+		'C/J Prime-Daeodon': {
+			food: 49.945,
+			affinity: 15
+		},
+		'C/J Prime-Thylacoleo': {
+			food: 49.945,
+			affinity: 35
 		},
 		'Spoiled Meat': {
 			food: 50,
@@ -58,9 +82,25 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 20,
 			affinity: 750
 		},
-		'Lamb Chop': {
+		'Mutton-Daeodon': {
 			food: 50,
-			affinity: 100
+			affinity: 37.5
+		},
+		'Mutton-Thylacoleo': {
+			food: 50,
+			affinity: 25
+		},
+		'Lamb Chop': {
+			food: 49.945,
+			affinity: 101.25
+		},
+		'Lamb Chop-Daeodon': {
+			food: 49.945,
+			affinity: 20.25
+		},
+		'Lamb Chop-Thylacoleo': {
+			food: 49.945,
+			affinity: 47.25
 		},
 		'Raw Fish': {
 			food: 25,
@@ -103,6 +143,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinity: 275
 		},
 		'Kibble-Therizinosaurus': {
+			food: 119.97,
+			affinity: 400
+		},
+		'Kibble-Daeodon': {
 			food: 119.97,
 			affinity: 400
 		},
@@ -608,6 +652,29 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			},
 			hitboxes: {
 				"Body": 1
+			}
+		},
+
+		Daeodon: {
+			foodrate: -0.01*288.039185,
+			basetorpor: 800.0,
+			basetorporrate: -0.6*3,
+			torporperlevel: 0.06,
+			baseaffinity: 4500,
+			affinityperlevel: 245.0,
+			ineffectbyaff: 0.0625,
+			basefood: 'Raw Meat-Daeodon',
+			foods: ['Raw Meat-Daeodon', 'Prime Meat-Daeodon', 'C/J Prime-Daeodon', 'Mutton-Daeodon', 'Lamb Chop-Daeodon', 'Kibble-Daeodon'],
+			kibble: 'Iguanodon',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 3
 			}
 		},
 
@@ -1509,6 +1576,29 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			hitboxes: {
 				"Body": 1,
 				"Head": 3
+			}
+		},
+
+		Thylacoleo: {
+			foodrate: -0.001543*288.039185,
+			basetorpor: 700.0,
+			basetorporrate: -0.1*18.5,
+			torporperlevel: 0.06,
+			baseaffinity: 2250.0,
+			affinityperlevel: 60.0,
+			ineffectbyaff: 3.125,
+			basefood: 'Raw Meat',
+			foods: ['Cooked Meat-Thylacoleo', 'Prime Meat-Thylacoleo', 'C/J Prime-Thylacoleo', 'Mutton-Thylacoleo', 'Lamb Chop-Thylacoleo', 'Kibble-Generic'],
+			kibble: 'Titanoboa',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 1.5
 			}
 		},
 
