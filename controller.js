@@ -955,7 +955,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			affinityperlevel: 136,
 			ineffectbyaff: 3.125,
 			basefood: 'Raw Meat',
-			foods: ['Mutton', 'Raw Meat', 'Prime Meat', 'C/J Prime', 'Kibble-Griffin'],
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Griffin'],
 			kibble: 'Allosaurus',
 			tamingmethods: ['Standard'],
 			damagemultipliers: {
