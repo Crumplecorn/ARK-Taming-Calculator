@@ -150,6 +150,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 119.97,
 			affinity: 400
 		},
+		'Kibble-Megalania': {
+			food: 119.97,
+			affinity: 400
+		},
 		'Crop': {
 			food: 40,
 			affinity: 40
@@ -1067,6 +1071,28 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2.5,
 			nonviolentfoodaffinitymultiplier: 1.6
+		},
+
+		Megalania: {
+			foodrate: -0.001736*160.010239,
+			basetorpor: 700.0,
+			basetorporrate: -10.0*1.8,
+			torporperlevel: 0.06,
+			baseaffinity: 4000.0,
+			affinityperlevel: 85.0,
+			ineffectbyaff: 3.5,
+			basefood: 'Raw Meat',
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Megalania'],
+			kibble: 'Baryonyx',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1
+			}
 		},
 
 		Megaloceros: {
