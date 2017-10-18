@@ -1716,7 +1716,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			level: 20,
 			tamingmethod: "Standard",
 			usertamingmultiplier: 1,
-			tamingmultiplier: 2,
+			tamingmultiplier: 1,
 			foodratemultiplier: 1,
 			totalfood: 0,
 			suppliedaffinity: 0
@@ -1872,10 +1872,11 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 	$scope.settamingmethod=function() { //General purpose function-caller function for a few fields
 		if ($scope.creature.tamingmultiplier>0 && $scope.creature.foodratemultiplier>0) { //Necessary to prevent endless loop
-			var now = new Date();
-			$cookies.putObject('creature', $scope.creature, {expires: new Date(now.getFullYear(), now.getMonth()+6, now.getDate()), path: '/taming'});
 
 			$scope.creature.tamingmultiplier=$scope.creature.usertamingmultiplier*$scope.basetamingmultiplier;
+
+			var now = new Date();
+			$cookies.putObject('creature', $scope.creature, {expires: new Date(now.getFullYear(), now.getMonth()+6, now.getDate()), path: '/taming'});
 
 			$scope.maxfoodcalc();
 			$scope.foodcalc();
