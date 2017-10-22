@@ -1560,6 +1560,29 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			}
 		},
 
+		"Tapejara": {
+			foodrate: -0.001543*216.029373,
+			basetorpor: 450.0,
+			basetorporrate: -0.1*3.0,
+			torporperlevel: 0.06,
+			baseaffinity: 2200.0,
+			affinityperlevel: 100.0,
+			ineffectbyaff: 3.125,
+			basefood: 'Raw Meat',
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Generic'],
+			kibble: 'Allosaurus',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 3
+			}
+		},
+
 		"Terror Bird": {
 			foodrate: -0.001578*352.06308,
 			basetorpor: 300,
