@@ -1560,7 +1560,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			}
 		},
 
-		"Tapejara": {
+		Tapejara: {
 			foodrate: -0.001543*216.029373,
 			basetorpor: 450.0,
 			basetorporrate: -0.1*3.0,
@@ -1731,9 +1731,9 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 
 	//Value relating to the creature being tamed
 	$scope.creature=$cookies.getObject('creature');
-	if ($scope.creature==undefined || !($scope.creature.name in $scope.creatures) || $scope.creature.version!="20170911") {
+	if ($scope.creature==undefined || !($scope.creature.name in $scope.creatures) || $scope.creature.version!="20171022") {
 		$scope.creature={
-			version: "20170911",
+			version: "20171022",
 			searchname: "Ankylosaurus",
 			name: "Ankylosaurus",
 			level: 20,
@@ -1894,7 +1894,7 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 	}
 
 	$scope.settamingmethod=function() { //General purpose function-caller function for a few fields
-		if ($scope.creature.tamingmultiplier>0 && $scope.creature.foodratemultiplier>0) { //Necessary to prevent endless loop
+		if ($scope.creature.usertamingmultiplier>0 && $scope.creature.foodratemultiplier>0) { //Necessary to prevent endless loop
 
 			$scope.creature.tamingmultiplier=$scope.creature.usertamingmultiplier*$scope.basetamingmultiplier;
 
