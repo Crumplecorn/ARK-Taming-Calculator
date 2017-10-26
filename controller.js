@@ -1672,6 +1672,18 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			}
 		},
 
+		Vulture: {
+			foodrate: -0.001302*1152.07373,
+			baseaffinity: 655.0,
+			affinityperlevel: 45.0,
+			ineffectbyaff: 4.166666,
+			basefood: 'Spoiled Meat',
+			foods: ['Spoiled Meat'],
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 2, //devkit is 0.5
+			nonviolentfoodaffinitymultiplier: 1.6
+		},
+
 		"Woolly Rhino": {
 			foodrate: -0.003156*150.0,
 			basetorpor: 600.0,
