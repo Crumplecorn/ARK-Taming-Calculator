@@ -6,9 +6,17 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 30,
 			affinity: 30
 		},
+		'Mejoberry-Kentro': {
+			food: 30,
+			affinity: 10
+		},
 		'Other Berry': {
 			food: 20,
 			affinity: 20
+		},
+		'Other Berry-Kentro': {
+			food: 20,
+			affinity: 7
 		},
 		'Raw Meat': {
 			food: 50,
@@ -1025,6 +1033,27 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			hitboxes: {
 				"Body": 1,
 				"Head": 3
+			}
+		},
+
+		Kentrosaurus: {
+			foodrate: -0.005341*208.034286,
+			basetorpor: 500.0,
+			basetorporrate: -0.1*3.0,
+			torporperlevel: 0.06,
+			baseaffinity: 5500.0,
+			affinityperlevel: 285.0,
+			ineffectbyaff: 0.1,
+			basefood: 'Mejoberry',
+			foods: ['Mejoberry-Kentro', 'Other Berry-Kentro', 'Crop', 'Kibble-Generic'],
+			kibble: 'Compy',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8
+			},
+			hitboxes: {
+				"Body": 1
 			}
 		},
 
