@@ -162,6 +162,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 119.97,
 			affinity: 400
 		},
+		'Kibble-Archaeopteryx': {
+			food: 25,
+			affinity: 400
+		},
 		'Crop': {
 			food: 40,
 			affinity: 40
@@ -233,6 +237,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 		'Honey-Direbear': {
 			food: 80,
 			affinity: 400
+		},
+		'Chitin': {
+			food: 50,
+			affinity: 50
 		}
 
 	}
@@ -499,6 +507,28 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2.0,
 			nonviolentfoodaffinitymultiplier: 1.0
+		},
+
+		Archaeopteryx: {
+			foodrate: -0.001302*1152.073730,
+			basetorpor: 100.000000,
+			basetorporrate: -0.1*8.333000,
+			torporperlevel: 0.06,
+			baseaffinity: 500.000000,
+			affinityperlevel: 22.500000,
+			ineffectbyaff: 1.333333,
+			basefood: 'Chitin',
+			foods: ['Chitin', 'Kibble-Archaeopteryx'],
+			kibble: 'Pelagornis',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 3
+			}
 		},
 
 		Argentavis: {
