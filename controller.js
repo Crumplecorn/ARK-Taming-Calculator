@@ -166,6 +166,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 25,
 			affinity: 400
 		},
+		'Kibble-Basilosaurus': {
+			food: 319.68,
+			affinity: 500
+		},
 		'Crop': {
 			food: 40,
 			affinity: 40
@@ -564,6 +568,41 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			foods: ['Raw Meat-Arthropluera', 'Spoiled Meat', 'Broth of Enlightenment'],
 			tamingmethods: ['Non-Violent'],
 			nonviolentfoodratemultiplier: 2.0,
+			nonviolentfoodaffinitymultiplier: 1.6
+		},
+
+		Baryonyx: {
+			foodrate: -0.001543*648.088135,
+			basetorpor: 400.000000,
+			basetorporrate: -0.1*3.000000,
+			torporperlevel: 0.06,
+			baseaffinity: 2500.000000,
+			affinityperlevel: 100.000000,
+			ineffectbyaff: 2.500000,
+			basefood: 'Raw Fish',
+			foods: ['Raw Fish', 'Prime Fish', 'Kibble-Generic'],
+			kibble: 'Pachyrhino',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1
+			}
+		},
+
+		Basilosaurus: {
+			foodrate: -0.002929*420.000000,
+			baseaffinity: 6600.000000,
+			affinityperlevel: 250.000000,
+			ineffectbyaff: 2.5,
+			basefood: 'Raw Meat',
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Basilosaurus'],
+			kibble: 'Therizinosaurus',
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 5.000000,
 			nonviolentfoodaffinitymultiplier: 1.6
 		},
 
