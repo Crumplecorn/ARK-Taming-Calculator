@@ -174,6 +174,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 40,
 			affinity: 40
 		},
+		'Rockarrot-Equus': {
+			food: 20,
+			affinity: 210
+		},
 		'Rare Mushroom': {
 			food: 75,
 			affinity: 90
@@ -245,6 +249,26 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 		'Chitin': {
 			food: 50,
 			affinity: 50
+		},
+		'Plant Species Z Seed': {
+			food: 75,
+			affinity: 400
+		},
+		'Aquatic Mushroom': {
+			food: 50,
+			affinity: 75
+		},
+		'Auric Mushroom': {
+			food: 50,
+			affinity: 75
+		},
+		'Beer': {
+			food: 45,
+			affinity: 400
+		},
+		'Bio Toxin': {
+			food: 45,
+			affinity: 200
 		}
 
 	}
@@ -649,6 +673,18 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			}
 		},
 
+		Bulbdog: {
+			foodrate: -0.000868*2880.184326,
+			baseaffinity: 2200.000000,
+			affinityperlevel: 65.000000,
+			ineffectbyaff: 2.5,
+			basefood: 'Aquatic Mushroom',
+			foods: ['Aquatic Mushroom', 'Plant Species Z Seed'],
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 2.000000,
+			nonviolentfoodaffinitymultiplier: 1.650000
+		},
+
 		Carbonemys: {
 			foodrate: -0.003156*352.06308,
 			basetorpor: 275,
@@ -713,6 +749,18 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			hitboxes: {
 				"Body": 1
 			}
+		},
+
+		Chalicotherium: {
+			foodrate: -0.003156*352.063080,
+			baseaffinity: 5000.000000,
+			affinityperlevel: 275.000000,
+			ineffectbyaff: 0.160000,
+			basefood: 'Beer',
+			foods: ['Beer'],
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 0.5, //dev kit is 2
+			nonviolentfoodaffinitymultiplier: 1.600000
 		},
 
 		Compsognathus: {
@@ -968,6 +1016,43 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			hitboxes: {
 				"Body": 1
 			}
+		},
+
+		/*Electrophorus: {
+			foodrate: -0.002929*420.000000,
+			baseaffinity: 2250.000000,
+			affinityperlevel: 90.000000,
+			ineffectbyaff: 2.500000,
+			basefood: 'Bio Toxin',
+			foods: ['Bio Toxin'],
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 4.000000,
+			nonviolentfoodaffinitymultiplier: 1.600000
+		}, Requires testing */
+
+		/*Equus: {
+			foodrate: -0.001929*432.002777,
+			baseaffinity: 3600.000000,
+			affinityperlevel: 180.000000,
+			ineffectbyaff: 0.400000,
+			basefood: 'Rockarrot-Equus',
+			foods: ['Rockarrot-Equus', 'Kibble-Generic'],
+			kibble: 'Troodon',
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 2.000000,
+			nonviolentfoodaffinitymultiplier: 1.600000
+		}, Requires testing */
+
+		Featherlight: {
+			foodrate: -0.000868*2880.184326,
+			baseaffinity: 2200.000000,
+			affinityperlevel: 65.000000,
+			ineffectbyaff: 2.500000,
+			basefood: 'Auric Mushroom',
+			foods: ['Auric Mushroom', 'Plant Species Z Seed'],
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 2.000000,
+			nonviolentfoodaffinitymultiplier: 1.650000
 		},
 
 		Gallimimus: {
