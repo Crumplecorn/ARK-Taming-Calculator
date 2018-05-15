@@ -170,6 +170,10 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			food: 319.68,
 			affinity: 500
 		},
+		'Kibble-Megalosaurus': {
+			food: 135,
+			affinity: 400
+		},
 		'Crop': {
 			food: 40,
 			affinity: 40
@@ -1112,6 +1116,18 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			nonviolentfoodaffinitymultiplier: 1.65
 		},
 
+		Glowtail: {
+			foodrate: -0.000868*2880.184326,
+			baseaffinity: 2200.000000,
+			affinityperlevel: 65.000000,
+			ineffectbyaff: 2.5,
+			basefood: 'Aquatic Mushroom',
+			foods: ['Aquatic Mushroom', 'Plant Species Z Seed'],
+			tamingmethods: ['Non-Violent'],
+			nonviolentfoodratemultiplier: 2.000000,
+			nonviolentfoodaffinitymultiplier: 1.650000
+		},
+
 		Griffin: {
 			foodrate: -0.311111111,
 			basetorpor: 1500.0,
@@ -1319,6 +1335,29 @@ var tamingController=angular.module('tamingControllers', []).controller('tamingC
 			},
 			hitboxes: {
 				"Body": 1
+			}
+		},
+
+		Megalosaurus: {
+			foodrate: -0.001852*199.983994,
+			basetorpor: 775.0,
+			basetorporrate: -0.1*3.0,
+			torporperlevel: 0.06,
+			baseaffinity: 3450.0,
+			affinityperlevel: 150.0,
+			ineffectbyaff: 1.875,
+			basefood: 'Raw Meat',
+			foods: ['Raw Meat', 'Prime Meat', 'C/J Prime', 'Mutton', 'Lamb Chop', 'Kibble-Megalosaurus'],
+			kibble: 'Oviraptor',
+			tamingmethods: ['Standard'],
+			damagemultipliers: {
+				"DmgType_Melee_HighTorpidity_StoneWeapon": 0.66,
+				"DmgType_Melee_Human": 0.8,
+				"DmgType_Melee_Dino_Herbivore": 0.6
+			},
+			hitboxes: {
+				"Body": 1,
+				"Head": 3
 			}
 		},
 
